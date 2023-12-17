@@ -1,0 +1,38 @@
+﻿@using Sandbox;
+@using Sandbox.UI;
+
+@inherits PanelComponent
+
+<root>
+    <div class="player-debuffs">
+        @foreach (var debuff in DebuffManager.ActiveDebuffs)
+        {
+            <div class="debuff">
+                <span class="debuf-icon">@debuff.DebuffIcon</span>
+                <div class="debuff-info">
+                    <div class="debuff-name">@debuff.DebuffName</div>
+                    <div class="debuff-description">@debuff.DebuffDescription</div>
+                    <div class="debuff-duration-bar-container">
+                        <div class="debuff-duration-bar" style="width: @((1 - (debuff.DebuffTime / debuff.DebuffDuration)) * 100)%"></div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</root>
+
+@code
+{
+    [Property]
+    public DebuffManager DebuffManager { get; set; }
+
+    protected override void OnUpdate()
+    {
+        base.OnUpdate();
+        foreach (var debuff in DebuffManager.ActiveDebuffs)
+        {
+
+        }
+    }
+    protected override int BuildHash() => System.HashCode.Combine(Time.Now);
+}

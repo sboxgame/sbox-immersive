@@ -1,0 +1,131 @@
+﻿@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+
+<root>
+	<div class="handhold" style="transform: rotateZ(@transformx);">
+		<div class="icon">🤚</div>
+		<div class="text">Hold</div>
+	</div>
+
+	<div class="handpress" style="transform: rotateZ(@transformx);">
+		<div class="icon">👆</div>
+		<div class="text">Press</div>
+	</div>
+
+	<div class="handscreen" style="transform: rotateZ(@transformx);">
+		<div class="icon">✒️​​</div>
+		<div class="text"></div>
+	</div>
+	
+	<div class="handuse" style="transform: rotateZ(@transformx);">
+		<div class="icon">✊</div>
+		<div class="text">Use</div>
+	</div>
+
+	<div class="controls">
+		<div class="control">🫳<InputHint Button="use"/> To Drop</div>
+		<div class="control">🫴<InputHint Button="flashlight"/> To Toss</div>
+		<div class="control">🔎<InputHint Button="attack2"/> To Examine</div>
+		<div class="control">👉<InputHint Button="attack1"/> To Use</div>	
+		<div class="control">👀<InputHint Button="attack3"/> To Bring Closer</div>	
+	</div>
+
+	<div class="presscontrols">
+		<div class="control">👉<InputHint Button="attack1"/> To Press</div>
+	</div>
+
+	<div class="usecontrols">
+		<div class="control">👉<InputHint Button="attack1"/> To Use</div>
+	</div>
+
+	<div class="holdcontrols">
+		<div class="control">🤚<InputHint Button="use"/> To Hold</div>
+	</div>
+
+
+</root>
+
+@code
+{
+	public bool IsHandInteract { get; set; }
+	public bool IsHandPress { get; set; }
+	public bool IsHandUse { get; set; }
+	public bool IsHandScreen { get; set; }
+	public bool hasObject { get; set; }
+
+	private float transformx;
+
+	public float xInertia { get; private set; }
+
+	public BaseInteract.InteractionType CurrentInteraction { get; set; }
+
+	protected override void OnUpdate()
+	{
+		base.OnUpdate();
+
+		SetClass("handhold-active", IsHandInteract);
+		SetClass("handpress-active", IsHandPress);
+		SetClass("handuse-active", IsHandUse);
+		SetClass("handscreen-active", IsHandScreen);
+		SetClass("controls-active", hasObject);
+
+		switch (CurrentInteraction)
+		{
+			case BaseInteract.InteractionType.Hold:
+				IsHandInteract = true;
+				IsHandPress = false;
+				IsHandUse = false;
+				IsHandScreen = false;
+				break;
+			case BaseInteract.InteractionType.Touch:
+				IsHandInteract = false;
+				IsHandPress = true;
+				IsHandUse = false;
+				IsHandScreen = false;
+				break;
+			case BaseInteract.InteractionType.Use:
+				IsHandInteract = false;
+				IsHandPress = false;
+				IsHandUse = true;
+				IsHandScreen = false;
+				break;
+			case BaseInteract.InteractionType.Screen:
+				IsHandInteract = false;
+				IsHandPress = false;
+				IsHandUse = false;
+				IsHandScreen = true;
+				break;
+			case BaseInteract.InteractionType.None:
+				IsHandInteract = false;
+				IsHandPress = false;
+				IsHandUse = false;
+				IsHandScreen = false;
+				break;
+			default:
+				IsHandInteract = false;
+				IsHandPress = false;
+				IsHandUse = false;
+				IsHandScreen = false;
+				break;		
+		}
+		HandAnimation();
+	}
+
+	public void HandAnimation()
+	{
+		var newx = Input.MouseDelta.x;
+		var xdelta = newx;
+
+		xInertia += xdelta;
+		xInertia = xInertia.LerpTo(0, Time.Delta * 35.0f);
+
+		transformx = xInertia;
+	}
+
+
+	/// <summary>
+	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
+	/// </summary>
+	protected override int BuildHash() => System.HashCode.Combine(Time.Delta);
+}

@@ -1,0 +1,17 @@
+ImmersiveUIPaperTest {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: scale(.55%);
+    justify-content: center;
+    align-items: center;
+    font-family: W11Emoji;
+
+    .title {
+        font-size: 10px;
+        font-family: Poppins;
+        color: #fff;
+    }
+}

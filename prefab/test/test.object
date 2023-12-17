@@ -1,0 +1,31 @@
+{
+  "RootObject": {
+    "Id": "9d9891ec-c143-45a2-ab58-841480ec72ac",
+    "Name": "Cube (2)",
+    "Enabled": true,
+    "Position": "193.3328,47.51318,40.53875",
+    "Rotation": "0,0,0,1",
+    "Scale": "1,1,1",
+    "Tags": "metal",
+    "Components": [
+      {
+        "__type": "ModelComponent",
+        "__enabled": true,
+        "BodyGroups": 18446744073709551615,
+        "MaterialOverride": null,
+        "Model": "models/dev/box.vmdl",
+        "ShouldCastShadows": true,
+        "Tint": "0.09412,0.09412,0.09412,1"
+      },
+      {
+        "__type": "ColliderBoxComponent",
+        "__enabled": true,
+        "IsTrigger": false,
+        "Scale": "50,50,50",
+        "Static": false,
+        "Surface": null
+      }
+    ]
+  },
+  "__references": []
+}

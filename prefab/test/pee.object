@@ -1,0 +1,26 @@
+{
+  "RootObject": {
+    "Id": "7d3f0c2f-ed83-4262-adcb-e274b720457f",
+    "Name": "Object",
+    "Enabled": true,
+    "Position": "0,0,0",
+    "Rotation": "0,0,0,1",
+    "Scale": "1,1,1",
+    "Tags": "",
+    "Components": [
+      {
+        "__type": "ParticleSystem",
+        "__enabled": true,
+        "Looped": false,
+        "Particles": "particles/impact.metal.vpcf",
+        "PlaybackSpeed": 1
+      },
+      {
+        "__type": "SelfDestructComponent",
+        "__enabled": true,
+        "Seconds": 0.1
+      }
+    ]
+  },
+  "__references": []
+}

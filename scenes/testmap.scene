@@ -1,0 +1,30 @@
+{
+  "GameObjects": [
+    {
+      "Id": "407974ce-7b3f-4a6e-8e92-74872641a1a6",
+      "Name": "Object",
+      "Enabled": true,
+      "Position": "0,0,0",
+      "Rotation": "0,0,0,1",
+      "Scale": "1,1,1",
+      "Tags": "",
+      "Components": [
+        {
+          "__type": "MapComponent",
+          "__enabled": true,
+          "MapName": "facepunch.construct"
+        }
+      ]
+    }
+  ],
+  "SceneProperties": {
+    "FixedUpdateFrequency": 50,
+    "MaxFixedUpdates": 5,
+    "TimeScale": 1,
+    "ThreadedAnimation": true,
+    "UseFixedUpdate": true
+  },
+  "Title": "testmap",
+  "Description": "",
+  "__references": []
+}

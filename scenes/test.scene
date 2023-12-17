@@ -1,0 +1,1642 @@
+{
+  "GameObjects": [
+    {
+      "Id": "b2a19d23-0d2b-4372-b8aa-701591ea943a",
+      "Name": "SkyBox",
+      "Position": "-68.25261,0,0",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "SkyBox2D",
+          "__enabled": true,
+          "SkyMaterial": "materials/skybox/skybox_workshop.vmat",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "Id": "280cd888-858f-42ee-b6d8-21968a3bbe5e",
+      "Name": "Directional Light",
+      "Position": "0,0,41.09164",
+      "Rotation": "0.4351622,0.4351622,-0.5573454,0.5573453",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "DirectionalLight",
+          "__enabled": true,
+          "LightColor": "0.91373,0.98039,1,1",
+          "Shadows": true,
+          "SkyColor": "0.05882,0.07451,0.08235,1"
+        }
+      ]
+    },
+    {
+      "Id": "85a2ec35-50ff-4407-a0eb-dc8fd659eba3",
+      "Name": "Citizen",
+      "Position": "-66.08116,0,15.03458",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "CharacterController",
+          "__enabled": true,
+          "Acceleration": 10,
+          "GroundAngle": 45,
+          "Height": 71.05,
+          "IgnoreLayers": "player,trigger",
+          "Radius": 6,
+          "StepHeight": 18
+        },
+        {
+          "__type": "CitizenAnimationHelper",
+          "__enabled": true,
+          "BodyWeight": 1,
+          "EyeSource": null,
+          "EyesWeight": 1,
+          "HeadWeight": 1,
+          "Height": 1,
+          "IkLeftFoot": null,
+          "IkLeftHand": null,
+          "IkRightFoot": null,
+          "IkRightHand": null,
+          "LookAt": null,
+          "LookAtEnabled": false,
+          "Target": "a07071f7-98cb-4c9a-9eda-bb3a72cde7d8"
+        },
+        {
+          "__type": "ImmersiveUse",
+          "__enabled": true,
+          "Camera": "e75c1c2b-7e11-4c58-bb5c-1f3bf72dd5ce",
+          "Eye": "e75c1c2b-7e11-4c58-bb5c-1f3bf72dd5ce",
+          "UIInteract": "95fa32a2-7a5a-4ffa-a35f-fdd0b3fb7d9a"
+        },
+        {
+          "__type": "ImmersivePlayerController",
+          "__enabled": true,
+          "AnimationHelper": "85a2ec35-50ff-4407-a0eb-dc8fd659eba3",
+          "Body": "a07071f7-98cb-4c9a-9eda-bb3a72cde7d8",
+          "CameraDistance": 200,
+          "Eye": "e05f69d8-ef5c-457f-9c05-d11ef74142ca",
+          "FirstPerson": true,
+          "Gravity": "0,0,800"
+        },
+        {
+          "__type": "ImmersivePlayerStats",
+          "__enabled": true,
+          "CurrentState": "Neutral",
+          "peeobject": null
+        },
+        {
+          "__type": "DebuffManager",
+          "__enabled": true
+        }
+      ],
+      "Children": [
+        {
+          "Id": "a07071f7-98cb-4c9a-9eda-bb3a72cde7d8",
+          "Name": "Body",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "SkinnedModelRenderer",
+              "__enabled": false,
+              "BodyGroups": 18446744073709551615,
+              "BoneMergeTarget": null,
+              "CreateBoneObjects": false,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Model": "models/citizen/citizen.vmdl",
+              "ShouldCastShadows": true,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "Id": "e75c1c2b-7e11-4c58-bb5c-1f3bf72dd5ce",
+          "Name": "Camera",
+          "Position": "-200,0,64",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "CameraComponent",
+              "__enabled": true,
+              "BackgroundColor": "0.25292,0.26086,0.29703,1",
+              "ClearFlags": "All",
+              "FieldOfView": 90,
+              "IsMainCamera": true,
+              "Orthographic": false,
+              "OrthographicHeight": 1204,
+              "Priority": 1,
+              "RenderExcludeTags": "",
+              "RenderTags": "",
+              "TargetEye": "None",
+              "Viewport": "0,0,1,1",
+              "ZFar": 10000,
+              "ZNear": 1
+            },
+            {
+              "__type": "Sharpen",
+              "__enabled": true,
+              "Scale": 0.2
+            },
+            {
+              "__type": "Bloom",
+              "__enabled": true,
+              "BloomColor": {
+                "color": [
+                  {
+                    "c": "1,1,1,1"
+                  },
+                  {
+                    "t": 1,
+                    "c": "1,1,1,1"
+                  }
+                ],
+                "alpha": []
+              },
+              "BloomCurve": {
+                "rangey": "0,106.45",
+                "frames": [
+                  {},
+                  {
+                    "x": 1,
+                    "y": 1
+                  }
+                ]
+              },
+              "Mode": "Screen",
+              "Strength": 0.48,
+              "Threshold": 0.23,
+              "ThresholdWidth": 0.96
+            },
+            {
+              "__type": "Tonemapping",
+              "__enabled": true,
+              "ExposureCompensation": 0,
+              "MaximumExposure": 2,
+              "MinimumExposure": 1.3,
+              "Rate": 0.69
+            },
+            {
+              "__type": "Vignette",
+              "__enabled": true,
+              "Center": "0.4999999,0.5",
+              "Color": "0,0,0,0.7",
+              "Intensity": 0.8,
+              "Roundness": 0,
+              "Smoothness": 0.9
+            },
+            {
+              "__type": "DepthOfField",
+              "__enabled": true,
+              "BackBlur": true,
+              "BlurSize": 100,
+              "FocalDistance": 200,
+              "FrontBlur": false
+            }
+          ]
+        },
+        {
+          "Id": "e05f69d8-ef5c-457f-9c05-d11ef74142ca",
+          "Name": "EyePos",
+          "Position": "0,0,64",
+          "Enabled": true
+        },
+        {
+          "Id": "7478a590-9aae-4b2b-bd2b-b8f82fdfdc8b",
+          "Name": "Player Collider",
+          "Position": "0,0,26.11092",
+          "Tags": "player",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "SphereCollider",
+              "__enabled": true,
+              "Center": "0,0,0",
+              "IsTrigger": true,
+              "Radius": 25,
+              "Static": false,
+              "Surface": null
+            }
+          ]
+        },
+        {
+          "Id": "95fa32a2-7a5a-4ffa-a35f-fdd0b3fb7d9a",
+          "Name": "UI",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "ScreenPanel",
+              "__enabled": true,
+              "AutoScreenScale": true,
+              "Opacity": 1,
+              "Scale": 1,
+              "ZIndex": 100
+            },
+            {
+              "__type": "ImmersiveUIInteract",
+              "__enabled": true
+            },
+            {
+              "__type": "ImmersiveUIPlayerStats",
+              "__enabled": true,
+              "PlayerStats": "85a2ec35-50ff-4407-a0eb-dc8fd659eba3"
+            },
+            {
+              "__type": "ImmersiveUIDebuffs",
+              "__enabled": true,
+              "DebuffManager": "85a2ec35-50ff-4407-a0eb-dc8fd659eba3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "38819286-39f8-4365-b4c9-0e02084bd8a3",
+      "Name": "Object (1)",
+      "Scale": "50,50,50",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__enabled": true,
+          "BodyGroups": 18446744073709551615,
+          "MaterialGroup": null,
+          "MaterialOverride": "materials/dev/black_grid_8.vmat",
+          "Model": "models/plane_64.vmdl",
+          "ShouldCastShadows": true,
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "ModelCollider",
+          "__enabled": true,
+          "IsTrigger": false,
+          "Model": "models/plane_64.vmdl",
+          "Static": false,
+          "Surface": null
+        }
+      ]
+    },
+    {
+      "Id": "3e374c7c-9c42-4e9f-84a0-c90e4c18e5b8",
+      "Name": "fog",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "GradientFog",
+          "__enabled": true,
+          "Color": "0.31254,0.47149,0.5396,1",
+          "EndDistance": 2048,
+          "FalloffExponent": 3,
+          "Height": 5000,
+          "StartDistance": 500,
+          "VerticalFalloffExponent": 5
+        }
+      ]
+    },
+    {
+      "Id": "2abfba03-d35a-4a02-b560-f53e4e91300a",
+      "Name": "Object",
+      "Position": "0,0,214.241",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "EnvmapProbe",
+          "__enabled": true,
+          "Bounds": {
+            "Mins": "-2048,-2048,-512",
+            "Maxs": "2048,2048,512"
+          },
+          "Projection": "Sphere",
+          "Texture": "textures/cubemaps/default2.vtex",
+          "TintColor": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "Id": "4a82cd16-c9b7-4763-94f7-3e32103752f0",
+      "Name": "Cube",
+      "Position": "146.6516,0.00002298408,16.58257",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__enabled": true,
+          "BodyGroups": 18446744073709551615,
+          "MaterialGroup": null,
+          "MaterialOverride": null,
+          "Model": "models/dev/box.vmdl",
+          "ShouldCastShadows": true,
+          "Tint": "0.09412,0.09412,0.09412,1"
+        },
+        {
+          "__type": "BoxCollider",
+          "__enabled": true,
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "50,50,50",
+          "Static": false,
+          "Surface": null
+        }
+      ]
+    },
+    {
+      "Id": "3c3f58e7-1e55-48e4-97b1-410f6597486a",
+      "Name": "Cube (3)",
+      "Position": "146.6516,0.00002298408,16.58257",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__enabled": true,
+          "BodyGroups": 18446744073709551615,
+          "MaterialGroup": null,
+          "MaterialOverride": null,
+          "Model": "models/dev/box.vmdl",
+          "ShouldCastShadows": true,
+          "Tint": "0.09412,0.09412,0.09412,1"
+        },
+        {
+          "__type": "BoxCollider",
+          "__enabled": true,
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "50,50,50",
+          "Static": false,
+          "Surface": null
+        }
+      ]
+    },
+    {
+      "Id": "8f464e7d-424e-4524-9fff-ba5990c60060",
+      "Name": "Cube (1)",
+      "Position": "146.6516,48.59467,-1.120371",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__enabled": true,
+          "BodyGroups": 18446744073709551615,
+          "MaterialGroup": null,
+          "MaterialOverride": null,
+          "Model": "models/dev/box.vmdl",
+          "ShouldCastShadows": true,
+          "Tint": "0.09406,0.09406,0.09406,1"
+        },
+        {
+          "__type": "BoxCollider",
+          "__enabled": true,
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "50,50,50",
+          "Static": false,
+          "Surface": null
+        }
+      ]
+    },
+    {
+      "Id": "1540e553-d0c8-45e5-ab6f-9e15bd083136",
+      "Name": "wooden_desk_02",
+      "Position": "83.08612,-306.2278,0.000000000002968129",
+      "Rotation": "-0.0000004768372,0.000000000000009536751,1,0.00000000000002861022",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__enabled": true,
+          "BodyGroups": 18446744073709551615,
+          "MaterialGroup": null,
+          "MaterialOverride": null,
+          "Model": "models/props/trim_sheets/desk/wooden_desk/wooden_desk_02.vmdl",
+          "ShouldCastShadows": true,
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "ModelCollider",
+          "__enabled": true,
+          "IsTrigger": false,
+          "Model": "models/props/trim_sheets/desk/wooden_desk/wooden_desk_02.vmdl",
+          "Static": false,
+          "Surface": null
+        }
+      ],
+      "Children": [
+        {
+          "Id": "a20fad14-3e0c-4ad7-b0ad-bad96f9fb253",
+          "Name": "wooden_desk_drawer_small_02",
+          "Position": "12,-5.027467,21",
+          "Scale": "0.92,0.92,0.92",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "ModelRenderer",
+              "__enabled": true,
+              "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Model": "models/props/trim_sheets/desk/wooden_desk/wooden_desk_drawer_small_02.vmdl",
+              "ShouldCastShadows": true,
+              "Tint": "1,1,1,1"
+            },
+            {
+              "__type": "ModelCollider",
+              "__enabled": true,
+              "IsTrigger": false,
+              "Model": "models/props/trim_sheets/desk/wooden_desk/wooden_desk_drawer_small_02.vmdl",
+              "Static": false,
+              "Surface": null
+            },
+            {
+              "__type": "TestInteracter",
+              "__enabled": true,
+              "CanInteract": true,
+              "Interacter": null,
+              "IsPhysicsInteract": true
+            },
+            {
+              "__type": "Rigidbody",
+              "__enabled": true,
+              "AngularDamping": 0,
+              "Gravity": false,
+              "LinearDamping": 0
+            },
+            {
+              "__type": "ImmersivePhysConstraint",
+              "__enabled": true,
+              "ConstrainedObject": "a20fad14-3e0c-4ad7-b0ad-bad96f9fb253",
+              "MaxLimit": 12,
+              "MinLimit": 0
+            }
+          ]
+        },
+        {
+          "Id": "46ff0758-b51e-4793-997e-eeb93c884efe",
+          "Name": "wooden_desk_drawer_small_02",
+          "Position": "11.99996,-25.5,27.25",
+          "Scale": "0.95,0.95,0.95",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "ModelRenderer",
+              "__enabled": true,
+              "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Model": "models/props/trim_sheets/desk/wooden_desk/wooden_desk_drawer_small_02.vmdl",
+              "ShouldCastShadows": true,
+              "Tint": "1,1,1,1"
+            },
+            {
+              "__type": "ModelCollider",
+              "__enabled": true,
+              "IsTrigger": false,
+              "Model": "models/props/trim_sheets/desk/wooden_desk/wooden_desk_drawer_small_02.vmdl",
+              "Static": false,
+              "Surface": null
+            },
+            {
+              "__type": "TestInteracter",
+              "__enabled": true,
+              "CanInteract": true,
+              "Interacter": null,
+              "IsPhysicsInteract": true
+            },
+            {
+              "__type": "Rigidbody",
+              "__enabled": true,
+              "AngularDamping": 0,
+              "Gravity": false,
+              "LinearDamping": 0
+            },
+            {
+              "__type": "ImmersivePhysConstraint",
+              "__enabled": false,
+              "ConstrainedObject": "46ff0758-b51e-4793-997e-eeb93c884efe",
+              "MaxLimit": 12,
+              "MinLimit": 0
+            },
+            {
+              "__type": "SliderJoint",
+              "__enabled": true,
+              "Body": "1540e553-d0c8-45e5-ab6f-9e15bd083136",
+              "BreakForce": 0,
+              "BreakTorque": 0,
+              "EnableCollision": true,
+              "Friction": 5,
+              "MaxLength": 12,
+              "MinLength": 0
+            }
+          ]
+        },
+        {
+          "Id": "21279c16-043e-4c01-8daf-98522af6aa90",
+          "Name": "wooden_desk_drawer_small_02",
+          "Position": "11.99996,11.95308,43.41063",
+          "Rotation": "-0.00000002625598,0.0000000000000004819724,-0.4405023,0.8977514",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "ModelRenderer",
+              "__enabled": true,
+              "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Model": "models/props/trim_sheets/desk/wooden_desk/wooden_desk_drawer_small_02.vmdl",
+              "ShouldCastShadows": true,
+              "Tint": "1,1,1,1"
+            },
+            {
+              "__type": "ModelCollider",
+              "__enabled": true,
+              "IsTrigger": false,
+              "Model": "models/props/trim_sheets/desk/wooden_desk/wooden_desk_drawer_small_02.vmdl",
+              "Static": false,
+              "Surface": null
+            },
+            {
+              "__type": "TestInteracter",
+              "__enabled": true,
+              "CanInteract": true,
+              "Interacter": null,
+              "IsPhysicsInteract": true
+            },
+            {
+              "__type": "Rigidbody",
+              "__enabled": true,
+              "AngularDamping": 0,
+              "Gravity": false,
+              "LinearDamping": 0
+            },
+            {
+              "__type": "ImmersivePhysConstraint",
+              "__enabled": false,
+              "ConstrainedObject": "21279c16-043e-4c01-8daf-98522af6aa90",
+              "MaxLimit": 24,
+              "MinLimit": 0
+            },
+            {
+              "__type": "SliderJoint",
+              "__enabled": true,
+              "Body": null,
+              "BreakForce": 0,
+              "BreakTorque": 0,
+              "EnableCollision": false,
+              "Friction": 0,
+              "MaxLength": 12,
+              "MinLength": 0
+            }
+          ]
+        },
+        {
+          "Id": "2e33d97e-66f2-48c0-b0ef-e5adc1ed0af4",
+          "Name": "wooden_desk_drawer_small_02",
+          "Position": "12,25.5,21",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "ModelRenderer",
+              "__enabled": true,
+              "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Model": "models/props/trim_sheets/desk/wooden_desk/wooden_desk_drawer_small_02.vmdl",
+              "ShouldCastShadows": true,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "Id": "37717d5c-b046-4ee7-ad0d-99b5ad98df49",
+          "Name": "wooden_desk_drawer_small_02",
+          "Position": "12,25.5,27.25",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "ModelRenderer",
+              "__enabled": true,
+              "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Model": "models/props/trim_sheets/desk/wooden_desk/wooden_desk_drawer_small_02.vmdl",
+              "ShouldCastShadows": true,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "Id": "5fc872b8-3798-4b3b-a6db-30c2699682c3",
+          "Name": "wooden_desk_drawer_large_02",
+          "Position": "11.99999,-25.5,12.00001",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "ModelRenderer",
+              "__enabled": true,
+              "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Model": "models/props/trim_sheets/desk/wooden_desk/wooden_desk_drawer_large_02.vmdl",
+              "ShouldCastShadows": true,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "Id": "1dc01b1d-08b0-4e1a-8866-b29ab22cfe29",
+          "Name": "wooden_desk_drawer_large_02 (1)",
+          "Position": "11.99999,25.50044,12.00001",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "ModelRenderer",
+              "__enabled": true,
+              "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Model": "models/props/trim_sheets/desk/wooden_desk/wooden_desk_drawer_large_02.vmdl",
+              "ShouldCastShadows": true,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "8b7b4347-841d-4f24-8a43-79392ad32f65",
+      "Name": "Object",
+      "Position": "0,-226.646,12.85426",
+      "Enabled": true,
+      "Children": [
+        {
+          "Id": "8c6c6b9c-2d98-4ed1-81ff-c3aa53802cf6",
+          "Name": "packing_tape",
+          "Position": "80.6105,-126.701,37.37455",
+          "Rotation": "-0.0000008642673,0.00000000000000953676,1,0.00000000000002861025",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "ModelRenderer",
+              "__enabled": true,
+              "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Model": "models/props/packing_tape/packing_tape.vmdl",
+              "ShouldCastShadows": true,
+              "Tint": "1,1,1,1"
+            },
+            {
+              "__type": "ModelCollider",
+              "__enabled": true,
+              "IsTrigger": false,
+              "Model": "models/props/packing_tape/packing_tape.vmdl",
+              "Static": false,
+              "Surface": null
+            },
+            {
+              "__type": "Rigidbody",
+              "__enabled": true,
+              "AngularDamping": 0,
+              "Gravity": true,
+              "LinearDamping": 0
+            },
+            {
+              "__type": "TestInteracter",
+              "__enabled": true,
+              "CanInteract": true,
+              "Interacter": null,
+              "IsPhysicsInteract": true
+            }
+          ]
+        },
+        {
+          "Id": "74bd5ee6-5358-46ab-859a-0064026182dd",
+          "Name": "electrical_tape",
+          "Position": "73.95611,-125.7689,40.12545",
+          "Rotation": "-0.000000001963532,0.02626953,0.00000007471786,0.9996549",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "ModelRenderer",
+              "__enabled": true,
+              "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Model": "models/props/electrical_tape/electrical_tape.vmdl",
+              "ShouldCastShadows": true,
+              "Tint": "1,1,1,1"
+            },
+            {
+              "__type": "ModelCollider",
+              "__enabled": true,
+              "IsTrigger": false,
+              "Model": "models/props/electrical_tape/electrical_tape.vmdl",
+              "Static": false,
+              "Surface": null
+            },
+            {
+              "__type": "Rigidbody",
+              "__enabled": true,
+              "AngularDamping": 0,
+              "Gravity": true,
+              "LinearDamping": 0
+            },
+            {
+              "__type": "TestInteracter",
+              "__enabled": true,
+              "CanInteract": true,
+              "Interacter": null,
+              "IsPhysicsInteract": true
+            }
+          ]
+        },
+        {
+          "Id": "5d2c9d79-42f3-4f7d-88de-79605b7c0b11",
+          "Name": "electrical_tape (2)",
+          "Position": "73.95611,-125.7689,42.92276",
+          "Rotation": "-0.000000001963532,0.02626953,0.00000007471786,0.9996549",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "ModelRenderer",
+              "__enabled": true,
+              "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Model": "models/props/electrical_tape/electrical_tape.vmdl",
+              "ShouldCastShadows": true,
+              "Tint": "1,1,1,1"
+            },
+            {
+              "__type": "ModelCollider",
+              "__enabled": true,
+              "IsTrigger": false,
+              "Model": "models/props/electrical_tape/electrical_tape.vmdl",
+              "Static": false,
+              "Surface": null
+            },
+            {
+              "__type": "Rigidbody",
+              "__enabled": true,
+              "AngularDamping": 0,
+              "Gravity": true,
+              "LinearDamping": 0
+            },
+            {
+              "__type": "TestInteracter",
+              "__enabled": true,
+              "CanInteract": true,
+              "Interacter": null,
+              "IsPhysicsInteract": true
+            }
+          ]
+        },
+        {
+          "Id": "8693cf87-e90a-4b3d-b319-ba7634d7299a",
+          "Name": "packing_tape (2)",
+          "Position": "80.6105,-126.701,45.19004",
+          "Rotation": "-0.0000008642673,0.00000000000000953676,1,0.00000000000002861025",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "ModelRenderer",
+              "__enabled": true,
+              "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Model": "models/props/packing_tape/packing_tape.vmdl",
+              "ShouldCastShadows": true,
+              "Tint": "1,1,1,1"
+            },
+            {
+              "__type": "ModelCollider",
+              "__enabled": true,
+              "IsTrigger": false,
+              "Model": "models/props/packing_tape/packing_tape.vmdl",
+              "Static": false,
+              "Surface": null
+            },
+            {
+              "__type": "Rigidbody",
+              "__enabled": true,
+              "AngularDamping": 0,
+              "Gravity": true,
+              "LinearDamping": 0
+            },
+            {
+              "__type": "TestInteracter",
+              "__enabled": true,
+              "CanInteract": true,
+              "Interacter": null,
+              "IsPhysicsInteract": true
+            }
+          ]
+        },
+        {
+          "Id": "4c9c1450-0c98-4f31-b069-af9a1691cd2f",
+          "Name": "electrical_tape (3)",
+          "Position": "73.95611,-125.7689,45.42404",
+          "Rotation": "-0.000000001963532,0.02626953,0.00000007471786,0.9996549",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "ModelRenderer",
+              "__enabled": true,
+              "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Model": "models/props/electrical_tape/electrical_tape.vmdl",
+              "ShouldCastShadows": true,
+              "Tint": "1,1,1,1"
+            },
+            {
+              "__type": "ModelCollider",
+              "__enabled": true,
+              "IsTrigger": false,
+              "Model": "models/props/electrical_tape/electrical_tape.vmdl",
+              "Static": false,
+              "Surface": null
+            },
+            {
+              "__type": "Rigidbody",
+              "__enabled": true,
+              "AngularDamping": 0,
+              "Gravity": true,
+              "LinearDamping": 0
+            },
+            {
+              "__type": "TestInteracter",
+              "__enabled": true,
+              "CanInteract": true,
+              "Interacter": null,
+              "IsPhysicsInteract": true
+            }
+          ]
+        },
+        {
+          "Id": "bf9bfea2-1a20-42a7-a515-c86828ceaaae",
+          "Name": "packing_tape (3)",
+          "Position": "80.6105,-126.701,48.83964",
+          "Rotation": "-0.0000008642673,0.00000000000000953676,1,0.00000000000002861025",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "ModelRenderer",
+              "__enabled": true,
+              "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Model": "models/props/packing_tape/packing_tape.vmdl",
+              "ShouldCastShadows": true,
+              "Tint": "1,1,1,1"
+            },
+            {
+              "__type": "ModelCollider",
+              "__enabled": true,
+              "IsTrigger": false,
+              "Model": "models/props/packing_tape/packing_tape.vmdl",
+              "Static": false,
+              "Surface": null
+            },
+            {
+              "__type": "Rigidbody",
+              "__enabled": true,
+              "AngularDamping": 0,
+              "Gravity": true,
+              "LinearDamping": 0
+            },
+            {
+              "__type": "TestInteracter",
+              "__enabled": true,
+              "CanInteract": true,
+              "Interacter": null,
+              "IsPhysicsInteract": true
+            }
+          ]
+        },
+        {
+          "Id": "eff72745-1261-423d-930b-089bfe385737",
+          "Name": "packing_tape (1)",
+          "Position": "80.6105,-126.701,41.82652",
+          "Rotation": "-0.0000008642673,0.00000000000000953676,1,0.00000000000002861025",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "ModelRenderer",
+              "__enabled": true,
+              "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Model": "models/props/packing_tape/packing_tape.vmdl",
+              "ShouldCastShadows": true,
+              "Tint": "1,1,1,1"
+            },
+            {
+              "__type": "ModelCollider",
+              "__enabled": true,
+              "IsTrigger": false,
+              "Model": "models/props/packing_tape/packing_tape.vmdl",
+              "Static": false,
+              "Surface": null
+            },
+            {
+              "__type": "Rigidbody",
+              "__enabled": true,
+              "AngularDamping": 0,
+              "Gravity": true,
+              "LinearDamping": 0
+            },
+            {
+              "__type": "TestInteracter",
+              "__enabled": true,
+              "CanInteract": true,
+              "Interacter": null,
+              "IsPhysicsInteract": true
+            }
+          ]
+        },
+        {
+          "Id": "a2f24994-ae11-4ea9-8326-fe03bb65d7c7",
+          "Name": "electrical_tape (1)",
+          "Position": "79.55604,-120.969,38.32723",
+          "Rotation": "-0.000000001963532,0.02626953,0.00000007471786,0.9996549",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "ModelRenderer",
+              "__enabled": true,
+              "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Model": "models/props/electrical_tape/electrical_tape.vmdl",
+              "ShouldCastShadows": true,
+              "Tint": "1,1,1,1"
+            },
+            {
+              "__type": "ModelCollider",
+              "__enabled": true,
+              "IsTrigger": false,
+              "Model": "models/props/electrical_tape/electrical_tape.vmdl",
+              "Static": false,
+              "Surface": null
+            },
+            {
+              "__type": "Rigidbody",
+              "__enabled": true,
+              "AngularDamping": 0,
+              "Gravity": true,
+              "LinearDamping": 0
+            },
+            {
+              "__type": "TestInteracter",
+              "__enabled": true,
+              "CanInteract": true,
+              "Interacter": null,
+              "IsPhysicsInteract": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "f1da162f-7301-4865-bd88-b631b55f19df",
+      "Name": "bomberbrick",
+      "Position": "144.2256,49.38446,28.11136",
+      "Rotation": "-0.0000004768372,0.000000000000009536751,1,0.00000000000002861022",
+      "Scale": "0.25,0.25,0.25",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__enabled": true,
+          "BodyGroups": 18446744073709551615,
+          "MaterialGroup": null,
+          "MaterialOverride": null,
+          "Model": "models/bomberbrick/bomberbrick.vmdl",
+          "ShouldCastShadows": true,
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Rigidbody",
+          "__enabled": true,
+          "AngularDamping": 0,
+          "Gravity": true,
+          "LinearDamping": 0
+        },
+        {
+          "__type": "TestInteracter",
+          "__enabled": true,
+          "CanInteract": true,
+          "Interacter": null,
+          "IsPhysicsInteract": true
+        },
+        {
+          "__type": "BoxCollider",
+          "__enabled": true,
+          "Center": "0,0,16",
+          "IsTrigger": false,
+          "Scale": "32,32,32",
+          "Static": false,
+          "Surface": null
+        }
+      ]
+    },
+    {
+      "Id": "e54e74de-0222-420b-8bce-fd84201051f1",
+      "Name": "bomberbrick (2)",
+      "Position": "131.8338,63.99902,28.11136",
+      "Rotation": "-0.0000004768372,0.000000000000009536751,1,0.00000000000002861022",
+      "Scale": "0.5,0.5,0.5",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__enabled": true,
+          "BodyGroups": 18446744073709551615,
+          "MaterialGroup": null,
+          "MaterialOverride": null,
+          "Model": "models/red_apple/red_apple.vmdl",
+          "ShouldCastShadows": true,
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "ModelCollider",
+          "__enabled": true,
+          "IsTrigger": false,
+          "Model": "models/red_apple/red_apple.vmdl",
+          "Static": false,
+          "Surface": null
+        },
+        {
+          "__type": "Rigidbody",
+          "__enabled": true,
+          "AngularDamping": 0,
+          "Gravity": true,
+          "LinearDamping": 0
+        },
+        {
+          "__type": "EatInteracter",
+          "__enabled": true,
+          "CanInteract": true,
+          "Interacter": null,
+          "IsPhysicsInteract": true,
+          "numberofbites": 5
+        }
+      ]
+    },
+    {
+      "Id": "b8e595fb-f914-43bf-ac9a-39e722e3dea4",
+      "Name": "Magnet",
+      "Position": "139.8446,63.99902,28.11136",
+      "Rotation": "-0.0000004768372,0.000000000000009536751,1,0.00000000000002861022",
+      "Scale": "0.5,0.5,0.5",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__enabled": true,
+          "BodyGroups": 18446744073709551615,
+          "MaterialGroup": null,
+          "MaterialOverride": null,
+          "Model": "models/test/domino.vmdl",
+          "ShouldCastShadows": true,
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "ModelCollider",
+          "__enabled": true,
+          "IsTrigger": false,
+          "Model": "models/test/domino.vmdl",
+          "Static": false,
+          "Surface": null
+        },
+        {
+          "__type": "Rigidbody",
+          "__enabled": true,
+          "AngularDamping": 0,
+          "Gravity": true,
+          "LinearDamping": 0
+        },
+        {
+          "__type": "MagnetInteracter",
+          "__enabled": true,
+          "CanInteract": true,
+          "Interacter": null,
+          "IsPhysicsInteract": true
+        }
+      ]
+    },
+    {
+      "Id": "1c878fc5-e03c-438e-b88b-90c4c7a4624b",
+      "Name": "bomberbrick (1)",
+      "Position": "127.752,22.28938,54.34338",
+      "Rotation": "-0.0000004768372,0.000000000000009536751,1,0.00000000000002861022",
+      "Scale": "0.25,0.25,0.25",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__enabled": true,
+          "BodyGroups": 18446744073709551615,
+          "MaterialGroup": null,
+          "MaterialOverride": null,
+          "Model": "models/bomberbrick/bomberbrick.vmdl",
+          "ShouldCastShadows": true,
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Rigidbody",
+          "__enabled": true,
+          "AngularDamping": 0,
+          "Gravity": true,
+          "LinearDamping": 0
+        },
+        {
+          "__type": "TestInteracter",
+          "__enabled": true,
+          "CanInteract": true,
+          "Interacter": null,
+          "IsPhysicsInteract": true
+        },
+        {
+          "__type": "BoxCollider",
+          "__enabled": true,
+          "Center": "0,0,16",
+          "IsTrigger": false,
+          "Scale": "32,32,32",
+          "Static": false,
+          "Surface": null
+        }
+      ]
+    },
+    {
+      "Id": "077e2141-87f5-4f7e-a49a-7c240cbdd4a7",
+      "Name": "Paper",
+      "Position": "128.2406,14.31897,58.64652",
+      "Rotation": "-0.0000004768372,0.000000000000009536751,1,0.00000000000002861022",
+      "Scale": "0.04,0.04,0.04",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__enabled": true,
+          "BodyGroups": 18446744073709551615,
+          "MaterialGroup": null,
+          "MaterialOverride": "materials/editor/black_grid_8_doublesided.vmat",
+          "Model": "models/dev/error.vmdl",
+          "ShouldCastShadows": true,
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "ModelCollider",
+          "__enabled": true,
+          "IsTrigger": false,
+          "Model": "models/dev/error.vmdl",
+          "Static": false,
+          "Surface": null
+        },
+        {
+          "__type": "Rigidbody",
+          "__enabled": true,
+          "AngularDamping": 0,
+          "Gravity": true,
+          "LinearDamping": 0
+        },
+        {
+          "__type": "TestInteracter",
+          "__enabled": true,
+          "CanInteract": true,
+          "Interacter": null,
+          "IsPhysicsInteract": true
+        },
+        {
+          "__type": "BoxCollider",
+          "__enabled": true,
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "200,200,1",
+          "Static": false,
+          "Surface": null
+        }
+      ],
+      "Children": [
+        {
+          "Id": "b34b4895-4aac-441a-8a9c-c21d848fa41f",
+          "Name": "World UI",
+          "Position": "0,0.000000000000000000001323489,0.1",
+          "Rotation": "-0,0.7071061,-0,-0.7071075",
+          "Scale": "13,13,13",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "WorldPanel",
+              "__enabled": true,
+              "HorizontalAlign": "Center",
+              "LookAtCamera": false,
+              "PanelSize": "512,512",
+              "RenderScale": 1,
+              "VerticalAlign": "Center"
+            },
+            {
+              "__type": "ImmersiveUIPaperTest",
+              "__enabled": true,
+              "MyStringValue": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras id leo quis est pulvinar auctor. Phasellus feugiat nisl magna, a vehicula nibh molestie a. Aliquam tempor urna justo, id vehicula eros scelerisque ac. Phasellus ut accumsan nulla, ac rhoncus augue. In sit amet orci faucibus, tincidunt ex nec, bibendum elit. Sed consectetur libero metus, eget posuere enim lobortis sit amet. Ut orci eros, pulvinar non enim et, molestie dignissim magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Praesent odio neque, cursus a erat a, maximus consectetur erat. Cras cursus commodo nulla et ultrices. Sed nec viverra est. Sed eu augue vel ante ornare rhoncus. Sed tincidunt eget mauris nec efficitur. Mauris quis blandit mauris."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "133c22f3-0c1e-4977-9b77-cca504bf490b",
+      "Name": "Paper (1)",
+      "Position": "128.2406,-18.42966,50.16512",
+      "Rotation": "-0.0000004768372,0.000000000000009536751,1,0.00000000000002861022",
+      "Scale": "0.04,0.04,0.04",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__enabled": true,
+          "BodyGroups": 18446744073709551615,
+          "MaterialGroup": null,
+          "MaterialOverride": null,
+          "Model": "models/dev/error.vmdl",
+          "ShouldCastShadows": true,
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "ModelCollider",
+          "__enabled": true,
+          "IsTrigger": false,
+          "Model": "models/dev/error.vmdl",
+          "Static": false,
+          "Surface": null
+        },
+        {
+          "__type": "Rigidbody",
+          "__enabled": true,
+          "AngularDamping": 0,
+          "Gravity": true,
+          "LinearDamping": 0
+        },
+        {
+          "__type": "TestInteracter",
+          "__enabled": true,
+          "CanInteract": true,
+          "Interacter": null,
+          "IsPhysicsInteract": true
+        },
+        {
+          "__type": "BoxCollider",
+          "__enabled": true,
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "200,200,1",
+          "Static": false,
+          "Surface": null
+        }
+      ]
+    },
+    {
+      "Id": "15631fb4-c543-4a42-8c5d-c3d4ec275419",
+      "Name": "Object",
+      "Position": "124.8281,37.65725,35.62754",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__enabled": true,
+          "BodyGroups": 18446744073709551615,
+          "MaterialGroup": null,
+          "MaterialOverride": null,
+          "Model": "models/lubricant_spray.vmdl",
+          "ShouldCastShadows": true,
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "ModelCollider",
+          "__enabled": true,
+          "IsTrigger": false,
+          "Model": "models/lubricant_spray.vmdl",
+          "Static": false,
+          "Surface": null
+        },
+        {
+          "__type": "Rigidbody",
+          "__enabled": true,
+          "AngularDamping": 0,
+          "Gravity": true,
+          "LinearDamping": 0
+        },
+        {
+          "__type": "TestInteracter",
+          "__enabled": false,
+          "CanInteract": true,
+          "Interacter": null,
+          "IsPhysicsInteract": true
+        },
+        {
+          "__type": "SprayInteract",
+          "__enabled": true,
+          "CanInteract": true,
+          "EndDistance": 100,
+          "Interacter": null,
+          "IsBeingUsed": false,
+          "IsPhysicsInteract": true,
+          "nozzle": null
+        }
+      ]
+    },
+    {
+      "Id": "52d432ac-3946-4087-926e-9af87c5ba979",
+      "Name": "Object",
+      "Position": "120.9399,-40.7377,52.55028",
+      "Rotation": "-0.4999999,-0.5000011,0.4999992,0.4999998",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__enabled": true,
+          "BodyGroups": 18446744073709551613,
+          "MaterialGroup": null,
+          "MaterialOverride": null,
+          "Model": "models/sbox_props/electrical/switch.vmdl",
+          "ShouldCastShadows": true,
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "SwitchInteract",
+          "__enabled": true,
+          "CanInteract": true,
+          "Interacter": null,
+          "SwitchedObject": "659875b1-1e8a-47ee-acf8-e682bd54c1f8"
+        },
+        {
+          "__type": "BoxCollider",
+          "__enabled": true,
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "1.666671,3.133336,2",
+          "Static": false,
+          "Surface": null
+        }
+      ]
+    },
+    {
+      "Id": "659875b1-1e8a-47ee-acf8-e682bd54c1f8",
+      "Name": "Spot Light",
+      "Position": "148.5956,-42.14832,86.18807",
+      "Rotation": "0,0.707107,0,0.7071065",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "SpotLight",
+          "__enabled": true,
+          "Attenuation": 0.37,
+          "ConeInner": 15,
+          "ConeOuter": 45,
+          "Cookie": null,
+          "LightColor": "1.82745,1.96077,2,1",
+          "Radius": 200
+        }
+      ]
+    },
+    {
+      "Id": "be62d147-1b9c-4eb9-9e32-9fbb974711b5",
+      "Name": "Object",
+      "Position": "99.89908,-1.80969,0.0001785721",
+      "Rotation": "0,0,1,-0.0000006397578",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__enabled": true,
+          "BodyGroups": 18446744073709551615,
+          "MaterialGroup": null,
+          "MaterialOverride": null,
+          "Model": "models/sbox_props/toilet_a/toilet_a_base.vmdl",
+          "ShouldCastShadows": true,
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "immersiveInteractToilet",
+          "__enabled": true,
+          "CanInteract": true,
+          "Interacter": null,
+          "Interaction": "Hold"
+        },
+        {
+          "__type": "ModelCollider",
+          "__enabled": true,
+          "IsTrigger": false,
+          "Model": "models/sbox_props/toilet_a/toilet_a_base.vmdl",
+          "Static": false,
+          "Surface": null
+        }
+      ]
+    },
+    {
+      "Id": "3f4a91d3-1120-4e26-b3fd-e9834a4df526",
+      "Name": "beer_bottle",
+      "Position": "125.9139,57.1929,25.23605",
+      "Rotation": "-0.0000008642673,0.00000000000000953676,1,0.00000000000002861025",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__enabled": true,
+          "BodyGroups": 18446744073709551615,
+          "MaterialGroup": null,
+          "MaterialOverride": null,
+          "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
+          "ShouldCastShadows": true,
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Rigidbody",
+          "__enabled": true,
+          "AngularDamping": 0,
+          "Gravity": true,
+          "LinearDamping": 0
+        },
+        {
+          "__type": "ModelCollider",
+          "__enabled": true,
+          "IsTrigger": false,
+          "Model": "models/sbox_props/beer_bottle/beer_bottle.vmdl",
+          "Static": false,
+          "Surface": null
+        },
+        {
+          "__type": "ImmersiveDrinkTest",
+          "__enabled": true,
+          "CanInteract": true,
+          "Interacter": null
+        }
+      ]
+    },
+    {
+      "Id": "b42a894e-0c21-4feb-bbdf-d07de4fe49a4",
+      "Name": "fancywood_bed",
+      "Position": "64.74844,150.1228,-0.00003362176",
+      "Rotation": "-0.0000004768372,0.00000000000001036616,1,0.00000000000003109845",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__enabled": true,
+          "BodyGroups": 18446744073709551615,
+          "MaterialGroup": null,
+          "MaterialOverride": null,
+          "Model": "models/items/fancywooden_set/fancywood_bed.vmdl",
+          "ShouldCastShadows": true,
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "ModelCollider",
+          "__enabled": true,
+          "IsTrigger": false,
+          "Model": "models/items/fancywooden_set/fancywood_bed.vmdl",
+          "Static": false,
+          "Surface": null
+        },
+        {
+          "__type": "ImmersiveBedTest",
+          "__enabled": true,
+          "CanInteract": true,
+          "HeadLocation": "84d26c3c-343f-4290-9f51-9c1b0cb63ec0",
+          "Interacter": null
+        }
+      ],
+      "Children": [
+        {
+          "Id": "84d26c3c-343f-4290-9f51-9c1b0cb63ec0",
+          "Name": "bedhead",
+          "Position": "-29.75777,-0.000000336014,42.60466",
+          "Rotation": "0.00000003304949,-0.5544783,-0.00000000000000003607028,0.832198",
+          "Enabled": true
+        }
+      ]
+    },
+    {
+      "Id": "2d962013-e575-4f65-b5b7-c0ce5e3e6e08",
+      "Name": "wooden_door_01e",
+      "Position": "7.588417,-244.119,0",
+      "Rotation": "-0.0000004768372,0.000000000000009536751,1,0.00000000000002861022",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__enabled": true,
+          "BodyGroups": 18446744073709551615,
+          "MaterialGroup": null,
+          "MaterialOverride": null,
+          "Model": "models/props/trim_sheets/doors/wooden_doors/wooden_door_01e.vmdl",
+          "ShouldCastShadows": true,
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "HingeJoint",
+          "__enabled": true,
+          "Body": null,
+          "BreakForce": 0,
+          "BreakTorque": 0,
+          "EnableCollision": true,
+          "Friction": 10,
+          "MaxAngle": 270,
+          "MinAngle": -270
+        },
+        {
+          "__type": "Rigidbody",
+          "__enabled": true,
+          "AngularDamping": 0,
+          "Gravity": true,
+          "LinearDamping": 0
+        },
+        {
+          "__type": "TestInteracter",
+          "__enabled": true,
+          "CanInteract": true,
+          "Interacter": null,
+          "IsPhysicsInteract": true
+        },
+        {
+          "__type": "ModelCollider",
+          "__enabled": true,
+          "IsTrigger": false,
+          "Model": "models/props/trim_sheets/doors/wooden_doors/wooden_door_01e.vmdl",
+          "Static": false,
+          "Surface": null
+        }
+      ]
+    },
+    {
+      "Id": "898dbdf9-de85-42b8-8a22-40ab5794a184",
+      "Name": "wooden_door_01e (1)",
+      "Position": "7.588417,-149.6863,-0.000004319313",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__enabled": true,
+          "BodyGroups": 18446744073709551615,
+          "MaterialGroup": null,
+          "MaterialOverride": null,
+          "Model": "models/props/trim_sheets/doors/wooden_doors/wooden_door_01e.vmdl",
+          "ShouldCastShadows": true,
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "HingeJoint",
+          "__enabled": true,
+          "Body": null,
+          "BreakForce": 0,
+          "BreakTorque": 0,
+          "EnableCollision": true,
+          "Friction": 10,
+          "MaxAngle": 270,
+          "MinAngle": -270
+        },
+        {
+          "__type": "Rigidbody",
+          "__enabled": true,
+          "AngularDamping": 0,
+          "Gravity": true,
+          "LinearDamping": 0
+        },
+        {
+          "__type": "TestInteracter",
+          "__enabled": true,
+          "CanInteract": true,
+          "Interacter": null,
+          "IsPhysicsInteract": true
+        },
+        {
+          "__type": "ModelCollider",
+          "__enabled": true,
+          "IsTrigger": false,
+          "Model": "models/props/trim_sheets/doors/wooden_doors/wooden_door_01e.vmdl",
+          "Static": false,
+          "Surface": null
+        }
+      ]
+    }
+  ],
+  "SceneProperties": {
+    "FixedUpdateFrequency": 50,
+    "Lerping": true,
+    "MaxFixedUpdates": 5,
+    "NetworkFrequency": 30,
+    "ThreadedAnimation": true,
+    "TimeScale": 1,
+    "UseFixedUpdate": true
+  },
+  "Title": "test",
+  "Description": "",
+  "__references": [
+    "baik.brickblock",
+    "chase.red_apple",
+    "jammie.plane_64",
+    "polyhaven.lubricant_spray"
+  ]
+}

@@ -1,0 +1,235 @@
+﻿@using Sandbox;
+@using Sandbox.UI;
+@using System.Collections.Generic;
+@inherits PanelComponent
+
+<root>
+	<div class="playerheadicon">@currentFace</div>
+
+	<div class="playerstats">
+		@foreach (var stat in PlayerStats.CurrentPlayerStats)
+		{
+			@if (ShouldDisplayStat(stat.Key))
+			{
+				<div class="playerstatbar">
+					<div class="playerstatname">
+						<span class="stat-icon">@GetStatIcon(stat.Key)</span>
+					</div>
+					<div class="playerstatbar-container">
+						@if (stat.Key == ImmersivePlayerStats.PlayerStats.Money)
+						{
+							<div class="playerstattext">@stat.Value</div> <!-- Display numeric value for Money -->
+						}
+						else
+						{
+							<div class="playerstatvalue" style="width: @(stat.Value * 100)%; background-color: @GetStatBarColor(stat.Value)"></div>
+						}
+					</div>
+				</div>
+			}
+		}
+		<div class="playermoney">
+			<div class="playerstatname">
+				<span class="stat-icon">@GetStatIcon(ImmersivePlayerStats.PlayerStats.Money)</span>
+			</div>
+			<div class="playerstatmoney-container">
+				<div class="playerstattext">@FormatMoney(PlayerStats.CurrentPlayerStats[ImmersivePlayerStats.PlayerStats.Money])</div>
+			</div>
+		</div>
+	</div>
+</root>
+
+@*
+//for now lets only show a few stats
+<div class="playerstats">
+	@foreach (var stat in PlayerStats.CurrentPlayerStats)
+	{
+		<div class="playerstatbar">
+			<div class="playerstatname">@stat.Key</div>
+			<div class="playerstatbar-container">
+				<div class="playerstatvalue" style="width: @(stat.Value * 100)%; background-color: @GetStatBarColor(stat.Value)"></div>
+			</div>
+		</div>
+	}
+</div> *@
+
+
+@code
+{
+	private List<string> happyfaces = new()
+	{
+		"😆", "😁", "😄", "😃", "😀"
+	};
+
+	private List<string> neutralfaces = new()
+	{
+		"😐", "😑", "😶", "😏", "😒"
+	};
+
+	private List<string> angryfaces = new()
+	{
+		"😡", "😠", "🤬", "😤", "😡"
+	};
+
+	private List<string> sadfaces = new()
+	{
+		"😢", "😭", "😿", "😥", "😓"
+	};
+
+	private List<string> scaredfaces = new()
+	{
+		"😱", "😨", "😰", "😦", "😧"
+	};
+
+	private List<string> boredfaces = new()
+	{
+		"😴", "😪", "🥱", "😫", "😩"
+	};
+
+	private List<string> tiredfaces = new()
+	{
+		"😴", "😪", "🥱", "😫", "😩"
+	};
+
+	private List<string> needsToiletfaces = new()
+	{
+		"💩", "🚽", "🚾", "🧻", "🧻"
+	};
+
+	private List<string> thirstyfaces = new()
+	{
+	"🥤", "🧃", "🧃", "🧃", "🧃"
+	};
+
+	private List<string> drunkfaces = new()
+	{
+		"🥴", "🤪", "🤢", "🤮", "🤢"
+	};
+
+	private string currentFace = "☺️";
+	private RealTimeSince timeSinceLastChange = 0;
+
+	[Property]
+	public ImmersivePlayerStats PlayerStats { get; set; }
+
+	private Dictionary<ImmersivePlayerStats.PlayerStats, string> statIcons = new()
+	{
+		{ ImmersivePlayerStats.PlayerStats.Health, "❤️" },
+        { ImmersivePlayerStats.PlayerStats.Hunger, "🍔" },  
+        { ImmersivePlayerStats.PlayerStats.Thirst, "🥤" },
+        { ImmersivePlayerStats.PlayerStats.Energy, "⚡" },  
+        { ImmersivePlayerStats.PlayerStats.Bladder, "🚽" },
+		{ ImmersivePlayerStats.PlayerStats.Money,  "💵" }
+    };
+
+	private bool ShouldDisplayStat(ImmersivePlayerStats.PlayerStats stat)
+	{
+		// Ignore the Money stat
+		if (stat == ImmersivePlayerStats.PlayerStats.Money)
+		{
+			return false;
+		}
+
+		return stat == ImmersivePlayerStats.PlayerStats.Health ||
+						stat == ImmersivePlayerStats.PlayerStats.Hunger ||
+						stat == ImmersivePlayerStats.PlayerStats.Thirst ||
+						stat == ImmersivePlayerStats.PlayerStats.Energy ||
+						stat == ImmersivePlayerStats.PlayerStats.Bladder;
+	}
+
+	private string GetStatIcon(ImmersivePlayerStats.PlayerStats stat)
+	{
+		return statIcons.TryGetValue(stat, out var icon) ? icon : "";
+	}
+
+	protected override void OnUpdate()
+	{
+		base.OnUpdate();
+
+		// Change face every second
+		if (timeSinceLastChange >= 1.5)
+		{
+			ChangeFace();
+			timeSinceLastChange = 0;
+		}
+	}
+
+	private void ChangeFace()
+	{
+		Random rnd = new Random();
+
+		if (PlayerStats.CurrentState == ImmersivePlayerStats.PlayerState.Happy)
+		{
+			int index = rnd.Next(happyfaces.Count);
+			currentFace = happyfaces[index];
+		}
+		else if(PlayerStats.CurrentState == ImmersivePlayerStats.PlayerState.Angry)
+		{
+			int index = rnd.Next(angryfaces.Count);
+			currentFace = angryfaces[index];
+		}
+		else if(PlayerStats.CurrentState == ImmersivePlayerStats.PlayerState.Bladder)
+		{
+			int index = rnd.Next(needsToiletfaces.Count);
+			currentFace = needsToiletfaces[index];
+		}
+		else if(PlayerStats.CurrentState == ImmersivePlayerStats.PlayerState.Upset)
+		{
+			int index = rnd.Next(scaredfaces.Count);
+			currentFace = scaredfaces[index];
+		}
+		else if(PlayerStats.CurrentState == ImmersivePlayerStats.PlayerState.Thirsty)
+		{
+		int index = rnd.Next(thirstyfaces.Count);
+		currentFace = thirstyfaces[index];
+		}
+		else if (PlayerStats.CurrentState == ImmersivePlayerStats.PlayerState.Tired)
+		{
+			int index = rnd.Next(tiredfaces.Count);
+			currentFace = tiredfaces[index];
+		}
+		else if (PlayerStats.CurrentState == ImmersivePlayerStats.PlayerState.Drunk)
+		{
+			int index = rnd.Next(drunkfaces.Count);
+			currentFace = drunkfaces[index];
+		}
+		else
+		{
+			int index = rnd.Next(neutralfaces.Count);
+			currentFace = neutralfaces[index];
+		}
+	}
+
+	private string FormatMoney(float moneyValue)
+	{
+		// Format as a currency value, e.g., $123.45
+		return $"${moneyValue:0.00}";
+	}
+
+	private string GetStatBarColor(float value)
+	{
+		// Assuming value is between 0 and 1
+		// You can adjust the color ranges as needed
+		if (value > 0.75)
+		{
+			return "#4CAF50"; // Green for high values
+		}
+		else if (value > 0.5)
+		{
+			return "#FFEB3B"; // Yellow for medium-high values
+		}
+		else if (value > 0.25)
+		{
+			return "#FF9800"; // Orange for medium-low values
+		}
+		else
+		{
+			return "#F44336"; // Red for low values
+		}
+	}
+	/// <summary>
+	/// The hash determines if the system should be rebuilt. If it changes, it will be rebuilt.
+	/// </summary>
+	protected override int BuildHash() => System.HashCode.Combine(Time.Delta);
+	//protected override int BuildHash() => System.HashCode.Combine(currentFace, PlayerStats.CurrentPlayerStats);
+}

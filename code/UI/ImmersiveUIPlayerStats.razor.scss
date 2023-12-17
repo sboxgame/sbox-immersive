@@ -1,0 +1,93 @@
+ImmersiveUIPlayerStats {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    border-radius: 20px;
+    z-index: 10;
+    font-family: W11Emoji;
+
+    .playerheadicon {
+        position: absolute;
+        bottom: 25%;
+        left: 9%;
+        font-size: 92px;
+        //font-family: Poppins;
+        color: #fff;
+        text-shadow: 0 5px 0px #000;
+    }
+
+    .playerstats {
+        flex-direction: column;
+        position: absolute;
+        left: 5%;
+        bottom: 5%;
+
+        .playermoney {
+            font-size: 24px;
+            font-family: Poppins;
+            color: #fff;
+            justify-content: flex-end;
+            align-items: center;
+
+            .playerstatmoney-container {
+                background-color: #eee;
+                width: 100%;
+                height: 20px;
+                border-radius: 5px;
+                overflow: hidden;
+                max-width: 200px;
+                min-width: 200px;
+                box-shadow: 0 5px 0 #000;
+                margin-left: 16px;
+
+                .playerstattext {
+                    color: black;
+                    font-size: 16px;
+                    margin-bottom: 150px;
+                }
+            }
+
+            .playerstatname {
+                text-shadow: 0 5px 0px #000;
+            }
+        }
+
+
+        .playerstatbar {
+            font-size: 24px;
+            //font-family: Poppins;
+            color: #fff;
+            text-shadow: 0 5px 0px #000;
+            justify-content: flex-end;
+            align-items: center;
+
+            .playerstatbar-container {
+                background-color: #eee;
+                width: 100%;
+                height: 20px;
+                border-radius: 5px;
+                overflow: hidden;
+                max-width: 200px;
+                min-width: 200px;
+                box-shadow: 0 5px 0 #000;
+                margin-left: 16px;
+            }
+
+            .playerstatvalue {
+                background-color: #4CAF50;
+                height: 100%;
+                border-radius: 5px 0 0 5px;
+            }
+
+
+
+            .playerstatvalue {
+            }
+        }
+    }
+}
